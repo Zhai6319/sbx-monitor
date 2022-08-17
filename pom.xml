@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>sbx-core-parent</artifactId>
+        <groupId>com.sbx</groupId>
+        <version>1.0.0-SNAPSHOT</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.sbx</groupId>
+    <artifactId>sbx-monitor</artifactId>
+    <version>1.0.0-SNAPSHOT</version>
+
+    <properties>
+        <sbx-common.version>1.0.0-SNAPSHOT</sbx-common.version>
+        <alibaba.nacos.version>2.0.3</alibaba.nacos.version>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>com.sbx</groupId>
+            <artifactId>sbx-common</artifactId>
+            <version>${sbx-common.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.sbx</groupId>
+            <artifactId>sbx-core-web</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.sbx</groupId>
+            <artifactId>sbx-core-launch</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.sbx</groupId>
+            <artifactId>sbx-core-log</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.alibaba.nacos</groupId>
+            <artifactId>nacos-client</artifactId>
+            <version>${alibaba.nacos.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.sbx</groupId>
+            <artifactId>sbx-core-cloud</artifactId>
+            <exclusions>
+                <exclusion>
+                    <groupId>com.alibaba.nacos</groupId>
+                    <artifactId>nacos-client</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <dependency>
+            <groupId>de.codecentric</groupId>
+            <artifactId>spring-boot-admin-starter-server</artifactId>
+            <version>2.4.4</version>
+        </dependency>
+    </dependencies>
+
+
+    <repositories>
+        <repository>
+            <id>spring-milestone</id>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+            <url>http://repo.spring.io/milestone</url>
+        </repository>
+        <repository>
+            <id>spring-snapshot</id>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
+            <url>http://repo.spring.io/snapshot</url>
+        </repository>
+        <repository>
+            <id>sonatype-nexus-snapshots</id>
+            <name>Sonatype Nexus Snapshots</name>
+            <url>https://oss.sonatype.org/content/repositories/snapshots/</url>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
+            <releases>
+                <enabled>false</enabled>
+            </releases>
+        </repository>
+    </repositories>
+
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-antrun-plugin</artifactId>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>
